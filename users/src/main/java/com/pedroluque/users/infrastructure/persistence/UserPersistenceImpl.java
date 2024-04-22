@@ -1,6 +1,5 @@
 package com.pedroluque.users.infrastructure.persistence;
 
-import com.pedroluque.users.application.mapper.UserMapper;
 import com.pedroluque.users.domain.entity.User;
 import com.pedroluque.users.domain.persistence.UserPersistence;
 import org.springframework.beans.factory.annotation.Autowired;
