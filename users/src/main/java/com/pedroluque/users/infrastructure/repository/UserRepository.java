@@ -1,4 +1,4 @@
-package com.pedroluque.users.infrastructure.persistence;
+package com.pedroluque.users.infrastructure.repository;
 
 import com.pedroluque.users.domain.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;

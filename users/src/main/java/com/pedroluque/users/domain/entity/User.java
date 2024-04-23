@@ -8,7 +8,7 @@ import jakarta.persistence.*;
 public class User
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_sequence")
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //El GenerationType.SEQUENCE no es soportado por todas las bases de datos
     private Long id;
 
     @Column(name = "name", nullable = false, length = 30)
@@ -23,7 +23,11 @@ public class User
     @Column(name = "role", nullable = false, length = 20)
     private UserType role;
 
-    public User() {}
+
+    public User()
+    {
+        //Constructor vacio para JPA
+    }
 
     public Long getId()
     {

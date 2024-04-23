@@ -36,7 +36,6 @@ public class UserRestController
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-
     @PostMapping(value="/users", produces = "application/json", consumes = "application/json")
     public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto)
     {
