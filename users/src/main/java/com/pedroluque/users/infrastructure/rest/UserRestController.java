@@ -2,13 +2,18 @@ package com.pedroluque.users.infrastructure.rest;
 
 import com.pedroluque.users.application.dto.UserDto;
 import com.pedroluque.users.application.service.UserService;
+import com.pedroluque.users.domain.UserType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.List;
 
+@CrossOrigin(origins = "*", maxAge = 3600) //Nos permite hacer peticiones desde cualquier lugar
 @RestController
 public class UserRestController
 {
@@ -48,5 +53,15 @@ public class UserRestController
     {
         userService.deleteUserById(userId);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping(value="/search", produces = "application/json")
+    public ResponseEntity<Page<UserDto>> getUsersByCriteria(
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String surname,
+            @RequestParam(required = false) UserType role,
+            Pageable pageable) {
+        Page<UserDto> users = userService.getUsersByCriteria(name, surname, role, pageable);
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
 }

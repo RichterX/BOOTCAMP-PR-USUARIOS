@@ -1,1 +1,84 @@
-<p>user-list works!</p>
+<h4>Lista de usuarios</h4>
+<!-- Script para averiguar qué estamos recibiendo de la API
+<pre>{{users | json}}</pre>
+-->
+
+<!-- FILTRO DE BUSQUEDA -->
+<div class="input-group mb-3">
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Filtrar"
+    aria-label="Search"
+    aria-describedby="basic-addon2"
+  />
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel-fill" viewBox="0 0 16 16">
+            <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5z"/>
+          </svg>
+          Filtrar</button>
+  </div>
+</div>
+
+  <!-- Botón crear usuario-->
+  <div>
+    <button class="btn btn-primary ml-3" routerLink="/users/new">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-person-add"
+        viewBox="0 0 16 16">
+        <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
+        <path d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z"/>
+      </svg>
+      Crear nuevo usuario
+    </button>
+  </div>
+
+  <!--TABLA DE USUARIOS-->
+
+<table class="table table-striped" *ngIf="users.length>0"> <!-- directiva para indicar que si no recibimos usuarios, no se muestre la tabla-->
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Apellidos</th>
+      <th>Email</th>
+      <th>Rol</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.id }}</td>
+      <td>{{ user.name }}</td>
+      <td>{{ user.surname }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.role }}</td>
+      <td>
+        <button class="btn btn-success">Editar</button>
+        <button class="btn btn-danger">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- PAGINACIÓN DE USUARIOS
+
+  <nav aria-label="...">
+    <ul class="pagination">
+      <li class="page-item" [class.disabled]="currentPage===0">
+        <a class="page-link" href="#" (click)="changePage(currentPage-1)">Anterior</a>
+      </li>
+      <li class="page-item" *ngFor="let page of pages" [class.active]="page===currentPage">
+        <a class="page-link" href="#" (click)="changePage(page)">{{page+1}}</a>
+      </li>
+      <li class="page-item" [class.disabled]="currentPage===pages.length-1">
+        <a class="page-link" href="#" (click)="changePage(currentPage+1)">Siguiente</a>
+      </li>
+    </ul>
+  </nav>
+  -->

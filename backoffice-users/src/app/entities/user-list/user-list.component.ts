@@ -17,8 +17,16 @@ export class UserListComponent {
   }
 
   private getUsers(): void {
-    this.userService.getAllUsers().subscribe(users => this.users = users);
+    this.userService.getAllUsers().subscribe({
+      next: (usersRequest) => {
+        this.users = usersRequest;
+      },
+      error: (err) => {this.handleError(err);}
+    });
+  }
 
+  private handleError(err: any): void {
+    console.log(err);
   }
 
 }

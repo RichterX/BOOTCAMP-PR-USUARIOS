@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +9,7 @@ import { NavbarComponent } from './layouts/navbar/navbar.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { UserListComponent } from './entities/user-list/user-list.component';
 import { UserFormComponent } from './entities/user-form/user-form.component';
+import { HttpRequestIntercept } from './config/interceptors/http-request-interceptor.interceptor';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,13 @@ import { UserFormComponent } from './entities/user-form/user-form.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { //Especificamos el interceptor para todas las peticiones aquí, en la clase creada.
+      provide: HTTP_INTERCEPTORS, //HTTP_INTERCEPTORS es una constante de angular
+      useClass: HttpRequestIntercept, //Clase creada para interceptar todas las peticiones. Está en app.config
+      multi: true //Permite que se puedan interceptar varias peticiones
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
