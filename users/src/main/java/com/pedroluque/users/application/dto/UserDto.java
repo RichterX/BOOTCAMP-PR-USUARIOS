@@ -13,7 +13,10 @@ public class UserDto implements Serializable
     private String email;
     private UserType role;
 
-    public UserDto() {}
+    public UserDto()
+    {
+        // Constructor vacío para Serializables
+    }
 
     public Long getId()
     {

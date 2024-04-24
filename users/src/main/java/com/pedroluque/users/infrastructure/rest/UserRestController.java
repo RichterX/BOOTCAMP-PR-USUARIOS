@@ -1,7 +1,7 @@
 package com.pedroluque.users.infrastructure.rest;
 
 import com.pedroluque.users.application.dto.UserDto;
-import com.pedroluque.users.application.service.UserService;
+import com.pedroluque.users.service.UserService;
 import com.pedroluque.users.domain.UserType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -64,4 +64,14 @@ public class UserRestController
         Page<UserDto> users = userService.getUsersByCriteria(name, surname, role, pageable);
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
+
+    //Editar un usuario
+    @CrossOrigin(origins = "*")
+    @PatchMapping(path="/users", produces = "application/json", consumes = "application/json")
+    public ResponseEntity<UserDto> updateUserById(@RequestBody UserDto userDto)
+    {
+        userDto = userService.createUser(userDto);
+        return new ResponseEntity<>(userDto, HttpStatus.OK);
+    }
+
 }

@@ -1,8 +1,8 @@
-package com.pedroluque.users.application.service.impl;
+package com.pedroluque.users.service.impl;
 
 import com.pedroluque.users.application.dto.UserDto;
-import com.pedroluque.users.application.mapper.UserMapper;
-import com.pedroluque.users.application.service.UserService;
+import com.pedroluque.users.infrastructure.mapper.UserMapper;
+import com.pedroluque.users.service.UserService;
 import com.pedroluque.users.domain.UserType;
 import com.pedroluque.users.domain.entity.User;
 import com.pedroluque.users.infrastructure.repository.UserRepository;
@@ -81,5 +81,14 @@ public class UserServiceImpl implements UserService
         UserSpecification spec = new UserSpecification(criteriaList);
         Page<User> users = userRepository.findAll(spec, pageable);
         return users.map(userMapper::toDto);
+    }
+
+    //editamos un usuario
+    @Override
+    public UserDto editUserById(UserDto userDto)
+    {
+        var user = userMapper.toEntity(userDto);
+        user = userRepository.save(user);
+        return userMapper.toDto(user);
     }
 }

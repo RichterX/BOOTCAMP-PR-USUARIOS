@@ -11,7 +11,7 @@ public class SearchCriteria
         //Constructor vacio
     }
 
-        // Nuevo constructor que acepta key, value y operation
+        // Nuevo constructor que acepta key, value y operation para el posterior filtrado
     public SearchCriteria(String key, Object value, SearchOperation operation)
     {
         this.key = key;

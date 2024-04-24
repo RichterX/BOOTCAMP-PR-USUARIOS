@@ -1,4 +1,4 @@
-package com.pedroluque.users.application.mapper;
+package com.pedroluque.users.infrastructure.mapper;
 
 import com.pedroluque.users.application.dto.UserDto;
 import com.pedroluque.users.domain.entity.User;

@@ -1,1 +1,111 @@
-<p>user-form works!</p>
+<h4>Crear o modificar usuario</h4>
+
+<!--Formulario para crear un nuevo usuario-->
+<form *ngIf="user" #userForm="ngForm" name="userForm" role="form" novalidate autocomplete="off" class="justify-content-center">
+
+    <!--Id No Modificable, solo visible en edición-->
+    <div class="form-group">
+        <label for="id">Id</label>
+        <input type="number" class="form-control" id="id" name="id" #id="ngModel" [(ngModel)]="user.id" readonly placeholder="Nos encargamos por tí :)">
+    </div>
+
+    <!--Nombre-->
+    <div class="form-group">
+        <label for="name">Nombre</label>
+        <input type="text" class="form-control" id="name" name="name" #name="ngModel" [(ngModel)]="user.name" required minlength="3" maxlength="30">
+    </div>
+
+    <!-- Validación del nombre-->
+    <div *ngIf="(name.dirty || name.touched)&&name.errors" class="alert alert-danger">
+        <small class="form-text text-danger" *ngIf="name.errors['required']">
+            El nombre es obligatorio
+        </small>
+        <div *ngIf="name.errors['minlength']">
+            El nombre debe tener al menos 3 caracteres
+        </div>
+        <div *ngIf="name.errors['maxlength']">
+            El nombre debe tener como máximo 30 caracteres
+        </div>
+    </div>
+
+    <!--Apellidos-->
+    <div class="form-group">
+        <label for="surname">Apellidos</label>
+        <input type="text" class="form-control" id="surname" name="surname" #surname="ngModel" [(ngModel)]="user.surname" required minlength="3" maxlength="50">
+    </div>
+
+    <!-- Validación del apellido-->
+    <div *ngIf="(surname.dirty || surname.touched)&&surname.errors" class="alert alert-danger">
+        <small class="form-text text-danger" *ngIf="surname.errors['required']">
+            Los apellidos son obligatorios
+        </small>
+        <div *ngIf="surname.errors['minlength']">
+            Los apellidos deben tener al menos 3 caracteres
+        </div>
+        <div *ngIf="surname.errors['maxlength']">
+            Los apellidos deben tener como máximo 50 caracteres
+        </div>
+    </div>
+
+    <!--Email-->
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" #email="ngModel" [(ngModel)]="user.email" required>
+    </div>
+    
+    <!-- Validación del email-->
+    <div *ngIf="(email.dirty || email.touched) && email.errors" class="alert alert-danger">
+        <small class="form-text text-danger" *ngIf="email.errors['required']">
+            El email es obligatorio
+        </small>
+        <div *ngIf="email.errors['email']">
+            El email no tiene un formato correcto
+        </div>
+    </div>
+
+    <!--Rol-->
+    <div class="form-group">
+        <label for="role">Rol</label>
+        <select class = "col-4" #role="ngModel" name="role" [(ngModel)]="user.role" class="form-control" required>
+            <option value="ADMINISTRADOR">Administrador</option>
+            <option value="CONTRIBUTOR">Contributor</option>
+            </select>
+    </div>
+
+    <!-- Validación del rol-->
+    <div *ngIf="(role.dirty || role.touched) && role.errors" class="alert alert-danger">
+        <small class="form-text text-danger" *ngIf="role.errors['required']">
+            El rol es obligatorio
+        </small>
+    </div>
+
+    <br>
+    <p class="warning-message" *ngIf="!userForm.form.valid">¡ATENCIÓN! - Faltan campos por rellenar</p>
+    <!--Botones del formulario-->
+    <button type="button" id="btnSave" [disabled]="!userForm.form.valid" class="btn btn-success" (click)="saveUser()">Guardar</button>
+    <button type="button" id="btnCancel" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#askExitConfirm">Cancelar</button>
+</form>
+
+<!-- MODAL -->
+<div class="modal fade" id="askExitConfirm" tabindex="-1" aria-labelledby="askExitConfirm" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">CANCELAR</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- obtenemos el nombre del usuario a borrar-->
+          ¿Seguro que quieres marcharte?
+          <br><br>
+          <p class="warning">¡ATENCIÓN!
+            <br/>
+            ¡Los cambios no se guardarán!</p>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal" [routerLink]="['/users']">Salir</button>
+      </div>
+    </div>
+  </div>

@@ -1,3 +1,9 @@
+h4 {
+    display: flex;
+    justify-content: left;
+    margin-bottom: 40px;
+}
+
 thead {
     text-align: center;
 }
@@ -5,4 +11,51 @@ thead {
 tbody {
     vertical-align: middle;
     text-align: center;
+}
+
+.botoneraPaginacion {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.warning {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.modal-body {
+    text-align:center;
+}
+
+.filter-name {
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+    background-color: black;
+}
+
+#btnSearch {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.btn-secondary {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.new-button{
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#btn-edit {
+    margin-right: 5px;
+}
+
+form button {
+    margin-left: 0;
+    margin-right: 10px;
 }
