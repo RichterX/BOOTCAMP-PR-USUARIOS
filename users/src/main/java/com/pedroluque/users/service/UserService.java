@@ -11,8 +11,8 @@ import java.util.Optional;
 public interface UserService
 {
     List<UserDto> getAllUsers();
-    Optional<UserDto> getUserById(Long UserId);
+    Optional<UserDto> getUserById(Long userId);
     UserDto createUser(UserDto user);
-    void deleteUserById(Long UserId);
+    void deleteUserById(Long userId);
     Page<UserDto> getUsersByCriteria(String name, String surname, UserType role, Pageable pageable);
 }
