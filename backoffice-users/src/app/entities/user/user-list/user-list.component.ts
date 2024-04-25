@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { User } from '../user/model/user.model';
-import { UserService } from '../user/service/user.service';
+import { User } from '../model/user.model';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-user-list',
@@ -20,7 +20,7 @@ export class UserListComponent {
   totalPages: number = 0;
   totalElements: number = 0;
 
-  //Formulario de filtro
+  //Filtro de formulario
   nameFilter?: string;
   surnameFilter?: string;
   roleFilter?: string;
@@ -103,7 +103,7 @@ export class UserListComponent {
         let globalFilters: string = "";
         for(let filter of filters)
           {
-            globalFilters = globalFilters + filter + ",";
+            globalFilters = globalFilters + filter + "&"; //Importante, con una coma evidentemente no funciona. Los filtros se separan con &, las comas es para el sort
           }
 
           globalFilters = globalFilters.substring(0, globalFilters.length-1);

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from '../user/service/user.service';
-import { User } from '../user/model/user.model';
+import { UserService } from '../service/user.service';
+import { User } from '../model/user.model';
+
 
 @Component({
   selector: 'app-user-form',
@@ -15,7 +16,7 @@ export class UserFormComponent {
 
   constructor(private route: ActivatedRoute,
               private userService: UserService,
-              private router: Router) { }
+              private router: Router) {}
 
   ngOnInit(): void {
     const entryParam: string = this.route.snapshot.paramMap.get('userId') ?? 'new';
@@ -92,7 +93,6 @@ export class UserFormComponent {
       }
     });
   }
-
-
+  
 
 }

@@ -1,3 +1,5 @@
+@import "primeicons/primeicons.css";
+
 h4 {
     display: flex;
     justify-content: left;
@@ -37,4 +39,8 @@ form{
 .warning {
     font-weight: bold;
     font-size: 20px;
+}
+
+.btn-success {
+    margin-right: 10px;
 }

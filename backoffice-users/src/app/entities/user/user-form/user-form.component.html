@@ -82,8 +82,9 @@
     <br>
     <p class="warning-message" *ngIf="!userForm.form.valid">¡ATENCIÓN! - Faltan campos por rellenar</p>
     <!--Botones del formulario-->
-    <button type="button" id="btnSave" [disabled]="!userForm.form.valid" class="btn btn-success" (click)="saveUser()">Guardar</button>
-    <button type="button" id="btnCancel" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#askExitConfirm">Cancelar</button>
+    <button type="button" id="btnSave" [disabled]="!userForm.form.valid" class="btn btn-success mb-3" (click)="saveUser()">Guardar</button>
+    <button type="button" id="btnCancel" class="btn btn-secondary mb-3" data-bs-toggle="modal" data-bs-target="#askExitConfirm">Cancelar</button>
+
 </form>
 
 <!-- MODAL -->

@@ -66,7 +66,7 @@ public class UserRestController
     }
 
     //Editar un usuario
-    @CrossOrigin(origins = "*")
+    //@CrossOrigin(origins = "*")
     @PatchMapping(path="/users", produces = "application/json", consumes = "application/json")
     public ResponseEntity<UserDto> updateUserById(@RequestBody UserDto userDto)
     {
