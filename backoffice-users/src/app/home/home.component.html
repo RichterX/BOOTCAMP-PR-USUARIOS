@@ -1,7 +1,103 @@
-<h4>CRUD COMPLETO ANGULAR + JAVA SPRING BOOT</h4>
+<h4 style="display: flex; justify-content: center;">Ejercicio de CRUD completo (Angular + Java Spring Boot)</h4>
 
 <div class="col-12">
-    <p class="col-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, blanditiis. Nam et culpa repudiandae dolorem! Consectetur recusandae molestias corporis unde facilis porro odio quasi? Dolore fuga dicta at cupiditate nulla!</p>
-    <p class="col-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, blanditiis. Nam et culpa repudiandae dolorem! Consectetur recusandae molestias corporis unde facilis porro odio quasi? Dolore fuga dicta at cupiditate nulla!</p>
+  <br />
+  <h5>Descripción</h5>
+  <p>
+    El ejercicio ha sido realizado según los requerimientos exigidos por el
+    mismo. Se ha seguido según los criterios explicados en los vídeos y
+    documentación aportada, a excepción de los Cords, que no funcionan.
+  </p>
+
+  <h5>Backend</h5>
+  <p>
+    El backend ha sido desarrollado en Java Spring Boot, con una entidad de
+    usuario. Todo funciona correctamente a excepción de los Cors. A pesar de la
+    explicación de Manuel y Germán, no consigo hacerlo funcionar, y he recurrido
+    a usar <code> @CrossOrigin(origins = "*", maxAge = 3600) </code> de manera
+    global para el RestController.
+  </p>
+  <h6 class="resume">Resúmen de funcionalidad</h6>
+  <div class="col-5">
+    <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action list-group-item-success">
+            Mostrar todos los usuarios.
+        </a>
+        <a href="#" class="list-group-item list-group-item-action list-group-item-success">
+            Mostrar todos los usuarios con filtros, parámetros y paginación.
+        </a>
+        <a href="#" class="list-group-item list-group-item-action list-group-item-success">
+            Eliminar usuarios.
+        </a>
+        <a href="#" class="list-group-item list-group-item-action list-group-item-success">
+            Actualizar usuarios.
+        </a>
+        <a href="#" class="list-group-item list-group-item-action list-group-item-danger">
+            Configurar los Cords.
+        </a>
+    </div>
+  </div>
+
+  <br/>
+  <h5>Frontend</h5>
+  <p>
+    Respecto al frontend, el mismo ha sido desarrollado en Angular. Todo funciona según lo
+    previsto, pero cambiando los Cors en el backend, no hay manera de cargar los datos correctamente.
+  </p>
+  <h6 class="resume">Resúmen de requisitos (Vista principal)</h6>
+  <div class="col-5">
+    <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action list-group-item-success">
+            Menú superior con barra de navegación general.
+        </a>
+        <a href="#" class="list-group-item list-group-item-action list-group-item-success">
+            Aparecen todos los usuarios paginados y con las categorías solicitadas.
+        </a>
+        <a href="#" class="list-group-item list-group-item-action list-group-item-success">
+            Filtros en la parte superior. Pueden usarse combinados.
+        </a>
+        <a href="#" class="list-group-item list-group-item-action list-group-item-success">
+            Botón para aplicar los filtros y resetear los mismos.
+        </a>
+        <a href="#" class="list-group-item list-group-item-action list-group-item-success">
+            Podemos crear un nuevo usuario, modificar un usuario existente o eliminar un usuario.
+        </a>
+        <a href="#" class="list-group-item list-group-item-action list-group-item-success">
+            Si pulsamos "Eliminar" de un usuario, un pop-up nos advertirá de que se hará un borrado de usuario.
+        </a>
+        <a href="#" class="list-group-item list-group-item-action list-group-item-success">
+            Si el filtro no encuentra nada, aparece un mensaje indicando que no hay resultados.
+        </a>
+    </div>
+  </div>
+
+  <br/>
+  <h6 class="resume">Resúmen de requisitos (Vista Crear o modificar usuario)</h6>
+  <div class="col-5">
+    <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action list-group-item-success">
+            Al pulsar "Crear usuario", el formulario está vacío.
+        </a>
+        <a href="#" class="list-group-item list-group-item-action list-group-item-success">
+            Los campos tienen validación de datos.
+        </a>
+        <a href="#" class="list-group-item list-group-item-action list-group-item-success">
+            El botón "Guardar"se desactiva hasta estar todos los datos rellenados.
+        </a>
+        <a href="#" class="list-group-item list-group-item-action list-group-item-success">
+            Todos los campos son obligatorios y el campo "Rol" es de tipo desplegable.
+        </a>
+        <a href="#" class="list-group-item list-group-item-action list-group-item-success">
+            Al pulsar en el botón "Cancelar", aparece un pop-up confirmando la salida del formulario.
+        </a>
+    </div>
+  </div>
+
+  <br/>
+
+  <h5>Notas finales</h5>
+  <p>A pesar de que todo parece funcionar de forma correcta, he intentado implementar varias cosas, 
+    como por ejemplo los toast o notificaciones flotantes. He podido hacer la implementación de 
+    PrimeNg, pero no funciona en absoluto o funciona parcialmente. Es necesario investigar un poco más 
+    sobre el funcionamiento de estos componentes.</p>
 </div>
-<div class="col-6">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Inventore at expedita asperiores nihil nemo minus similique magnam, eligendi perspiciatis, molestiae itaque ullam blanditiis aut nam ipsa unde iusto quae. Illum?</div>

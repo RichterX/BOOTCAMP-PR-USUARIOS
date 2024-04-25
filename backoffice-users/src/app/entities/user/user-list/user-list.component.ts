@@ -113,7 +113,7 @@ export class UserListComponent {
       }
   }
 
-  //Obtenemos todos los usuarios
+  //Obtenemos todos los usuarios del backend
   private getUsers(): void {
 
     const filters: string | undefined = this.buildFilters();
