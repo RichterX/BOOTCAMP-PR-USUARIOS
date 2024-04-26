@@ -138,7 +138,10 @@ export class UserListComponent {
     console.log(err);
   }
 
-
+  public changePageSize(): void {
+    this.page = 0;
+    this.getUsers();
+  }
 
 
 }
