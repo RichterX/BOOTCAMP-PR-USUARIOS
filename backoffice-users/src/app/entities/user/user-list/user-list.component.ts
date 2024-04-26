@@ -13,7 +13,7 @@ export class UserListComponent {
   // Paginación
   page: number = 0;
   size: number = 5;
-  sort: string = "name,asc";
+  sort: string = "";
 
   first: boolean = false;
   last: boolean = false;
@@ -138,8 +138,16 @@ export class UserListComponent {
     console.log(err);
   }
 
+  //Método para cambiar los elementos que se muestran de la lista
   public changePageSize(): void {
     this.page = 0;
+    this.getUsers();
+  }
+
+  //Método para cambiar el filtro de orden
+  public changeSort(sort: string): void {
+    this.page = 0;
+    this.sort = sort;
     this.getUsers();
   }
 

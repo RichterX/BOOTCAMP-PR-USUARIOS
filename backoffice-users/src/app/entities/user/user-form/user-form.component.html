@@ -2,137 +2,301 @@
 <h4 *ngIf="mode === 'UPDATE'">Modificar usuario</h4>
 
 <!-- FORMULARIO -->
-<form *ngIf="user" #userForm="ngForm" name="userForm" role="form" novalidate autocomplete="off" class="justify-content-center">
+<div class="container col-4">
+  <div class="row justify-content-center">
+    <div class="col-md-12">
+      <form
+        *ngIf="user"
+        #userForm="ngForm"
+        name="userForm"
+        role="form"
+        novalidate
+        autocomplete="off"
+        class="justify-content-center"
+      >
+        <!--Id No Modificable, solo visible en edición-->
+        <div class="form-group">
+          <label for="id">Id</label>
+          <input
+            type="number"
+            class="form-control"
+            id="id"
+            name="id"
+            #id="ngModel"
+            [(ngModel)]="user.id"
+            readonly
+            placeholder="Nos encargamos por tí :)"
+          />
+        </div>
 
-    <!--Id No Modificable, solo visible en edición-->
-    <div class="form-group">
-        <label for="id">Id</label>
-        <input type="number" class="form-control" id="id" name="id" #id="ngModel" [(ngModel)]="user.id" readonly placeholder="Nos encargamos por tí :)">
-    </div>
+        <!--Nombre-->
+        <div class="form-group">
+          <label for="name">Nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            #name="ngModel"
+            [(ngModel)]="user.name"
+            required
+            minlength="3"
+            maxlength="30"
+          />
+        </div>
 
-    <!--Nombre-->
-    <div class="form-group">
-        <label for="name">Nombre</label>
-        <input type="text" class="form-control" id="name" name="name" #name="ngModel" [(ngModel)]="user.name" required minlength="3" maxlength="30">
-    </div>
-
-    <!-- Validación del nombre-->
-    <div *ngIf="(name.dirty || name.touched)&&name.errors" class="alert alert-danger">
-        <small class="form-text text-danger" *ngIf="name.errors['required']">
+        <!-- Validación del nombre-->
+        <div
+          *ngIf="(name.dirty || name.touched) && name.errors"
+          class="alert alert-danger"
+        >
+          <small class="form-text text-danger" *ngIf="name.errors['required']">
             El nombre es obligatorio
-        </small>
-        <div *ngIf="name.errors['minlength']">
+          </small>
+          <div *ngIf="name.errors['minlength']">
             El nombre debe tener al menos 3 caracteres
-        </div>
-        <div *ngIf="name.errors['maxlength']">
+          </div>
+          <div *ngIf="name.errors['maxlength']">
             El nombre debe tener como máximo 30 caracteres
+          </div>
         </div>
-    </div>
 
-    <!--Apellidos-->
-    <div class="form-group">
-        <label for="surname">Apellidos</label>
-        <input type="text" class="form-control" id="surname" name="surname" #surname="ngModel" [(ngModel)]="user.surname" required minlength="3" maxlength="50">
-    </div>
+        <!--Apellidos-->
+        <div class="form-group">
+          <label for="surname">Apellidos</label>
+          <input
+            type="text"
+            class="form-control"
+            id="surname"
+            name="surname"
+            #surname="ngModel"
+            [(ngModel)]="user.surname"
+            required
+            minlength="3"
+            maxlength="50"
+          />
+        </div>
 
-    <!-- Validación del apellido-->
-    <div *ngIf="(surname.dirty || surname.touched)&&surname.errors" class="alert alert-danger">
-        <small class="form-text text-danger" *ngIf="surname.errors['required']">
+        <!-- Validación del apellido-->
+        <div
+          *ngIf="(surname.dirty || surname.touched) && surname.errors"
+          class="alert alert-danger"
+        >
+          <small
+            class="form-text text-danger"
+            *ngIf="surname.errors['required']"
+          >
             Los apellidos son obligatorios
-        </small>
-        <div *ngIf="surname.errors['minlength']">
+          </small>
+          <div *ngIf="surname.errors['minlength']">
             Los apellidos deben tener al menos 3 caracteres
-        </div>
-        <div *ngIf="surname.errors['maxlength']">
+          </div>
+          <div *ngIf="surname.errors['maxlength']">
             Los apellidos deben tener como máximo 50 caracteres
+          </div>
         </div>
-    </div>
 
-    <!--Email-->
-    <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" name="email" #email="ngModel" [(ngModel)]="user.email" required>
-    </div>
-    
-    <!-- Validación del email-->
-    <div *ngIf="(email.dirty || email.touched) && email.errors" class="alert alert-danger">
-        <small class="form-text text-danger" *ngIf="email.errors['required']">
+        <!--Email-->
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            #email="ngModel"
+            [(ngModel)]="user.email"
+            required
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+          />
+        </div>
+
+        <!-- Validación del email-->
+        <div
+          *ngIf="(email.dirty || email.touched) && email.errors"
+          class="alert alert-danger"
+        >
+          <small class="form-text text-danger" *ngIf="email.errors['required']">
             El email es obligatorio
-        </small>
-        <div *ngIf="email.errors['email']">
+          </small>
+          <div *ngIf="email.errors['email']">
             El email no tiene un formato correcto
+          </div>
+          <!-- validar que el email contenga @ y .-->
+          <div *ngIf="email.errors['pattern']">
+            El email no tiene un formato correcto xxx@xx.xx
+          </div>
         </div>
-    </div>
 
-    <!--Rol-->
-    <div class="form-group">
-        <label for="role">Rol</label>
-        <select class = "col-4" #role="ngModel" name="role" [(ngModel)]="user.role" class="form-control" required>
+        <!--Rol-->
+        <div class="form-group">
+          <label for="role">Rol</label>
+          <select
+            class="col-4"
+            #role="ngModel"
+            name="role"
+            [(ngModel)]="user.role"
+            class="form-control"
+            required
+          >
             <option value="ADMINISTRADOR">Administrador</option>
             <option value="CONTRIBUTOR">Contributor</option>
-            </select>
-    </div>
+          </select>
+        </div>
 
-    <!-- Validación del rol-->
-    <div *ngIf="(role.dirty || role.touched) && role.errors" class="alert alert-danger">
-        <small class="form-text text-danger" *ngIf="role.errors['required']">
+        <!-- Validación del rol-->
+        <div
+          *ngIf="(role.dirty || role.touched) && role.errors"
+          class="alert alert-danger"
+        >
+          <small class="form-text text-danger" *ngIf="role.errors['required']">
             El rol es obligatorio
-        </small>
-    </div>
-
-    <br>
-    <p class="warning-message" *ngIf="!userForm.form.valid">¡ATENCIÓN! - Faltan campos por rellenar</p>
-
-    <!-- BOTONES DEL FORMULARIO -->
-
-    <!--Botón para crear un nuevo usuario-->
-    <button type="button" id="btnSave" [disabled]="!userForm.form.valid" class="btn btn-success mb-3" (click)="saveUser()" [routerLink]="['/users']" *ngIf="mode === 'NEW'">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-floppy2-fill" viewBox="0 0 16 16" style="margin-right: 5px;">
-            <path d="M12 2h-2v3h2z"/>
-            <path d="M1.5 0A1.5 1.5 0 0 0 0 1.5v13A1.5 1.5 0 0 0 1.5 16h13a1.5 1.5 0 0 0 1.5-1.5V2.914a1.5 1.5 0 0 0-.44-1.06L14.147.439A1.5 1.5 0 0 0 13.086 0zM4 6a1 1 0 0 1-1-1V1h10v4a1 1 0 0 1-1 1zM3 9h10a1 1 0 0 1 1 1v5H2v-5a1 1 0 0 1 1-1"/>
-          </svg>
-        Guardar
-    </button>
-
-    <!--Botón para actualizar un usuario existente-->
-    <button type="button" id="btnSave" [disabled]="!userForm.form.valid" class="btn btn-success mb-3" (click)="saveUser()" [routerLink]="['/users']" *ngIf="mode === 'UPDATE'">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-floppy2-fill" viewBox="0 0 16 16" style="margin-right: 5px;">
-            <path d="M12 2h-2v3h2z"/>
-            <path d="M1.5 0A1.5 1.5 0 0 0 0 1.5v13A1.5 1.5 0 0 0 1.5 16h13a1.5 1.5 0 0 0 1.5-1.5V2.914a1.5 1.5 0 0 0-.44-1.06L14.147.439A1.5 1.5 0 0 0 13.086 0zM4 6a1 1 0 0 1-1-1V1h10v4a1 1 0 0 1-1 1zM3 9h10a1 1 0 0 1 1 1v5H2v-5a1 1 0 0 1 1-1"/>
-          </svg>
-        Actualizar
-    </button>
-
-    <!--Botón para cancelar el formulario-->
-    <button type="button" id="btnCancel" class="btn btn-secondary mb-3" data-bs-toggle="modal" data-bs-target="#askExitConfirm">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16" style="margin-right: 5px;">
-            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
-          </svg>
-        Cancelar
-    </button>
-
-</form>
-
-<!-- MODAL -->
-<div class="modal fade" id="askExitConfirm" tabindex="-1" aria-labelledby="askExitConfirm" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">CANCELAR</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </small>
         </div>
-        <div class="modal-body">
-          <!-- obtenemos el nombre del usuario a borrar-->
-          ¿Seguro que quieres marcharte?
-          <br><br>
-          <p class="warning">¡ATENCIÓN!
-            <br/>
-            ¡Los cambios no se guardarán!</p>
-          
+
+        <br />
+
+        <!--No lo mostramos hasta tocar un campo-->
+        <div
+          class="warning"
+          *ngIf="
+            !userForm.form.valid &&
+            (name.touched || email.touched || role.touched)
+          "
+        >
+          <p class="warning-message">¡ATENCIÓN! - Faltan campos por rellenar</p>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal" [routerLink]="['/users']">Salir</button>
+
+        <!-- BOTONES DEL FORMULARIO -->
+
+        <!--Botón para crear un nuevo usuario-->
+        <button
+          type="button"
+          id="btnSave"
+          [disabled]="!userForm.form.valid"
+          class="btn btn-success mb-3"
+          (click)="saveUser()"
+          [routerLink]="['/users']"
+          *ngIf="mode === 'NEW'"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-floppy2-fill"
+            viewBox="0 0 16 16"
+            style="margin-right: 5px"
+          >
+            <path d="M12 2h-2v3h2z" />
+            <path
+              d="M1.5 0A1.5 1.5 0 0 0 0 1.5v13A1.5 1.5 0 0 0 1.5 16h13a1.5 1.5 0 0 0 1.5-1.5V2.914a1.5 1.5 0 0 0-.44-1.06L14.147.439A1.5 1.5 0 0 0 13.086 0zM4 6a1 1 0 0 1-1-1V1h10v4a1 1 0 0 1-1 1zM3 9h10a1 1 0 0 1 1 1v5H2v-5a1 1 0 0 1 1-1"
+            />
+          </svg>
+          Guardar
+        </button>
+
+        <!--Botón para actualizar un usuario existente-->
+        <button
+          type="button"
+          id="btnSave"
+          [disabled]="!userForm.form.valid"
+          class="btn btn-success mb-3"
+          (click)="saveUser()"
+          [routerLink]="['/users']"
+          *ngIf="mode === 'UPDATE'"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-floppy2-fill"
+            viewBox="0 0 16 16"
+            style="margin-right: 5px"
+          >
+            <path d="M12 2h-2v3h2z" />
+            <path
+              d="M1.5 0A1.5 1.5 0 0 0 0 1.5v13A1.5 1.5 0 0 0 1.5 16h13a1.5 1.5 0 0 0 1.5-1.5V2.914a1.5 1.5 0 0 0-.44-1.06L14.147.439A1.5 1.5 0 0 0 13.086 0zM4 6a1 1 0 0 1-1-1V1h10v4a1 1 0 0 1-1 1zM3 9h10a1 1 0 0 1 1 1v5H2v-5a1 1 0 0 1 1-1"
+            />
+          </svg>
+          Actualizar
+        </button>
+
+        <!--Botón para cancelar el formulario-->
+        <button
+          type="button"
+          id="btnCancel"
+          class="btn btn-secondary mb-3"
+          data-bs-toggle="modal"
+          data-bs-target="#askExitConfirm"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="currentColor"
+            class="bi bi-x-lg"
+            viewBox="0 0 16 16"
+            style="margin-right: 5px"
+          >
+            <path
+              d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"
+            />
+          </svg>
+          Cancelar
+        </button>
+      </form>
+
+      <!-- MODAL -->
+      <div
+        class="modal fade"
+        id="askExitConfirm"
+        tabindex="-1"
+        aria-labelledby="askExitConfirm"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">CANCELAR</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <!-- obtenemos el nombre del usuario a borrar-->
+              ¿Seguro que quieres marcharte?
+              <br /><br />
+              <p class="warning">
+                ¡ATENCIÓN!
+                <br />
+                ¡Los cambios no se guardarán!
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Cancelar
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger"
+                data-bs-dismiss="modal"
+                [routerLink]="['/users']"
+              >
+                Salir
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+</div>

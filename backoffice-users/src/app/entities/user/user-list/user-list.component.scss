@@ -29,10 +29,11 @@ tbody {
 }
 
 .filter-name {
-    color: white;
+    color: rgb(0, 0, 0);
     margin-bottom: 20px;
     text-align: center;
-    background-color: black;
+    font-weight: bold;
+    font-size: 20px;
 }
 
 #btnSearch {
@@ -58,4 +59,16 @@ tbody {
 form button {
     margin-left: 0;
     margin-right: 10px;
+}
+
+th:hover {
+    cursor: pointer;
+}
+
+.container {
+    background-color: #33333324;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border: 1px solid #ccc;
+    padding: 20px;
 }
