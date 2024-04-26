@@ -49,6 +49,7 @@ export class UserListComponent {
       this.userService.deleteUser(this.userIdToDelete).subscribe(
         {
           next: (data) => {
+            this.page=0;
             this.getUsers();
           },
           error: (err) => {
