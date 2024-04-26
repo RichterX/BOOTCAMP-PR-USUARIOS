@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "*", maxAge = 3600) //Nos permite hacer peticiones desde cualquier lugar
+//@CrossOrigin(origins = "*", maxAge = 3600) //Nos permite hacer peticiones desde cualquier lugar
 @RestController
 public class UserRestController
 {

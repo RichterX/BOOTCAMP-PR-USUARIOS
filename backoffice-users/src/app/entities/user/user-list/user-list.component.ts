@@ -28,6 +28,8 @@ export class UserListComponent {
   //Para el borrado de usuarios
   userIdToDelete?: number;
 
+  public elseBlock: any;
+
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {

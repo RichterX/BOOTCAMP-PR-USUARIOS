@@ -10,7 +10,6 @@ import org.springframework.web.filter.CorsFilter;
 @Configuration
 public class WebConfig
 {
-    /*
     @Bean
     @Profile("dev")//Si trabajamos con spring profile, activaríamos esta opción
     public CorsFilter corsFilterDev()
@@ -18,14 +17,14 @@ public class WebConfig
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.addAllowedOrigin("*");
+        config.addAllowedOrigin("http://localhost:4200");
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
     }
 
-
+    /*
     @Bean
     @Profile("prod")//Si trabajamos en producción, activaríamos esta opción
     public CorsFilter corsFilterProd()
@@ -37,9 +36,9 @@ public class WebConfig
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
         source.registerCorsConfiguration("/**", config);
-        return new CorsFilter();
+        return new CorsFilter(source);
     }
-
      */
+
 
 }
